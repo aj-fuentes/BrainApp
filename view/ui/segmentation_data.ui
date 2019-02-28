@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DockWidget</class>
+ <widget class="QDockWidget" name="DockWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>284</width>
+    <height>249</height>
+   </rect>
+  </property>
+  <property name="floating">
+   <bool>true</bool>
+  </property>
+  <property name="allowedAreas">
+   <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+  </property>
+  <property name="windowTitle">
+   <string>Datos de la segmentación</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTreeWidget" name="data">
+      <attribute name="headerDefaultSectionSize">
+       <number>150</number>
+      </attribute>
+      <attribute name="headerHighlightSections">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Dato</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Valor</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>Volumen</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Longitudes</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Longitud eje X</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Coordenada inicial X</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Coordenada final X</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Longitud eje Y</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Coordenada inicial Y</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Coordenada final Y</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Longitud eje Z</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Coordenada inicial Z</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Coordenada final Z</string>
+         </property>
+        </item>
+       </item>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCommandLinkButton" name="calculate">
+        <property name="text">
+         <string>Calcular datos</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QCommandLinkButton" name="save">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Guardar datos</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

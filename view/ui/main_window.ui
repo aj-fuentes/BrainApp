@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>605</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BrainApp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../qt resources/resources/icons.qrc">
+    <normaloff>:/icons/seleccion/main_icon.png</normaloff>:/icons/seleccion/main_icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1,0,1">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Imagen mostrada:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="imageName">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="ThreePlanesWidget" name="threePlanes" native="true">
+      <property name="statusTip">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCommandLinkButton" name="processImage">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="statusTip">
+       <string>Procesar la imagen con los filtros seleccionados.</string>
+      </property>
+      <property name="text">
+       <string>Procesar imagen</string>
+      </property>
+      <property name="shortcut">
+       <string>Ctrl+F5</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="ThreePlanesWidget" name="threePlanesResult" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionCargar_imagen"/>
+    <addaction name="actionCargar_serie"/>
+    <addaction name="actionGuardar"/>
+    <addaction name="separator"/>
+    <addaction name="actionGuardar_2"/>
+    <addaction name="actionCargar_configuraci_n"/>
+    <addaction name="separator"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAyuda_de_BrainApp"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <widget class="QMenu" name="menuVer">
+    <property name="title">
+     <string>Ver</string>
+    </property>
+    <addaction name="actionBarra_de_herramientas"/>
+    <addaction name="separator"/>
+    <addaction name="actionIm_genes"/>
+    <addaction name="actionPropiedades_de_la_imagen"/>
+    <addaction name="actionFiltros_del_proceso"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuVer"/>
+   <addaction name="menuAyuda"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="images">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>251</width>
+     <height>162</height>
+    </size>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_images.png</normaloff>:/icons/seleccion/show_images.png</iconset>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Imágenes cargadas</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QListWidget" name="imagesList">
+       <property name="statusTip">
+        <string>Lista de imágenes cargadas.</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QCommandLinkButton" name="useImage">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="statusTip">
+          <string>Usar esta imagen en el proceso.</string>
+         </property>
+         <property name="text">
+          <string>Usar/Actualizar esta imagen</string>
+         </property>
+         <property name="shortcut">
+          <string>F5</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="imageProperties">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>250</width>
+     <height>180</height>
+    </size>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_properties.png</normaloff>:/icons/seleccion/show_properties.png</iconset>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Propiedades de la imagen</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTreeWidget" name="propertiesTree">
+       <property name="statusTip">
+        <string>Propiedades de la imagen seleccionada.</string>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="animated">
+        <bool>true</bool>
+       </property>
+       <column>
+        <property name="text">
+         <string>Propiedad</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Valor</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Id</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Nombre</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Formato</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Fichero</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dimensión</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tipo de Pixel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Tamaño</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Ancho</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Alto</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profundidad</string>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Espaciado</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>X</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Y</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Z</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="filters">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>250</width>
+     <height>180</height>
+    </size>
+   </property>
+   <property name="windowIcon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_filters.png</normaloff>:/icons/seleccion/show_filters.png</iconset>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Filtros del proceso</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QTreeWidget" name="filtersTree">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectItems</enum>
+       </property>
+       <property name="animated">
+        <bool>true</bool>
+       </property>
+       <attribute name="headerDefaultSectionSize">
+        <number>100</number>
+       </attribute>
+       <attribute name="headerMinimumSectionSize">
+        <number>30</number>
+       </attribute>
+       <attribute name="headerStretchLastSection">
+        <bool>true</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Filtro</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Valor</string>
+        </property>
+       </column>
+       <item>
+        <property name="text">
+         <string>Suavizador</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Iteraciones</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Paso de tiempo</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Conductancia</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Segmentador</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Semilla</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>X</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Y</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Z</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mínimo</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Máximo</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Relleno</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Segmentador estadístico</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Semilla</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>X</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Y</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Z</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>Radio inicial</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Multiplicador</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Relleno</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Iteraciones</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </item>
+       <item>
+        <property name="text">
+         <string>Votación</string>
+        </property>
+        <property name="checkState">
+         <enum>Checked</enum>
+        </property>
+        <item>
+         <property name="text">
+          <string>Radio</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>X</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Y</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Z</string>
+          </property>
+          <property name="flags">
+           <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>Fondo</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Máscara</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Supervivencia</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nacimiento</string>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Barra de Herramientas</string>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCargar_imagen"/>
+   <addaction name="actionCargar_serie"/>
+   <addaction name="actionGuardar"/>
+   <addaction name="separator"/>
+   <addaction name="actionGuardar_2"/>
+   <addaction name="actionCargar_configuraci_n"/>
+   <addaction name="separator"/>
+   <addaction name="actionIm_genes"/>
+   <addaction name="actionPropiedades_de_la_imagen"/>
+   <addaction name="actionFiltros_del_proceso"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="actionAyuda_de_BrainApp">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/help.png</normaloff>:/icons/seleccion/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ayuda de BrainApp</string>
+   </property>
+   <property name="statusTip">
+    <string>Obtener ayuda.</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/main_icon.png</normaloff>:/icons/seleccion/main_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de...</string>
+   </property>
+   <property name="statusTip">
+    <string>Acerca de BrainApp.</string>
+   </property>
+  </action>
+  <action name="actionCargar_imagen">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/load_image.png</normaloff>:/icons/seleccion/load_image.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cargar imagen...</string>
+   </property>
+   <property name="statusTip">
+    <string>Cargar una imgen 3D o 2D desde un fichero.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/exit.png</normaloff>:/icons/seleccion/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Salir</string>
+   </property>
+   <property name="statusTip">
+    <string>Salir de la aplicación.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionCargar_serie">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/load_serie.png</normaloff>:/icons/seleccion/load_serie.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cargar serie...</string>
+   </property>
+   <property name="statusTip">
+    <string>Cargar una serie de imáges 2D para obtener un volumen 3D.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+L</string>
+   </property>
+  </action>
+  <action name="actionIm_genes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_images.png</normaloff>:/icons/seleccion/show_images.png</iconset>
+   </property>
+   <property name="text">
+    <string>Imágenes cargadas</string>
+   </property>
+   <property name="toolTip">
+    <string>Imágenes cargadas.</string>
+   </property>
+   <property name="statusTip">
+    <string>Mostrar/Ocultar las imágenes cargadas.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionPropiedades_de_la_imagen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_properties.png</normaloff>:/icons/seleccion/show_properties.png</iconset>
+   </property>
+   <property name="text">
+    <string>Propiedades de la imagen</string>
+   </property>
+   <property name="toolTip">
+    <string>Propiedades de la imagen.</string>
+   </property>
+   <property name="statusTip">
+    <string>Mostrar/Ocultar las propiedades de las imágenes cargadas.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionFiltros_del_proceso">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_filters.png</normaloff>:/icons/seleccion/show_filters.png</iconset>
+   </property>
+   <property name="text">
+    <string>Filtros del proceso</string>
+   </property>
+   <property name="toolTip">
+    <string>Filtros del proceso.</string>
+   </property>
+   <property name="statusTip">
+    <string>Mostrar/Ocultar los filtros del proceso.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionGuardar">
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/save_image.png</normaloff>:/icons/seleccion/save_image.png</iconset>
+   </property>
+   <property name="text">
+    <string>Guardar imagen...</string>
+   </property>
+   <property name="toolTip">
+    <string>Guardar la imagen procesada.</string>
+   </property>
+   <property name="statusTip">
+    <string>Guardar la imagen procesada.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionGuardar_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/save_conf.png</normaloff>:/icons/seleccion/save_conf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Guardar configuración...</string>
+   </property>
+   <property name="toolTip">
+    <string>Guardar la configuración de los filtros en un fichero.</string>
+   </property>
+   <property name="statusTip">
+    <string>Guardar la configuración de los filtros en un fichero.</string>
+   </property>
+  </action>
+  <action name="actionCargar_configuraci_n">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/load_conf.png</normaloff>:/icons/seleccion/load_conf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cargar configuración...</string>
+   </property>
+   <property name="toolTip">
+    <string>Cargar la configuración de los filtros desde un fichero.</string>
+   </property>
+   <property name="statusTip">
+    <string>Cargar la configuración de los filtros desde un fichero.</string>
+   </property>
+  </action>
+  <action name="actionBarra_de_herramientas">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../../../qt resources/resources/icons.qrc">
+     <normaloff>:/icons/seleccion/show_toolbar.png</normaloff>:/icons/seleccion/show_toolbar.png</iconset>
+   </property>
+   <property name="text">
+    <string>Barra de herramientas</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ThreePlanesWidget</class>
+   <extends>QWidget</extends>
+   <header>view.three_planes_widget</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../qt resources/resources/icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionIm_genes</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>images</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>45</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSalir</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionPropiedades_de_la_imagen</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>imageProperties</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>images</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionIm_genes</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageProperties</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionPropiedades_de_la_imagen</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filters</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionFiltros_del_proceso</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>444</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionFiltros_del_proceso</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>filters</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>144</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionBarra_de_herramientas</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>toolBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>37</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

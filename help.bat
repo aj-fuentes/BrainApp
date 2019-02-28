@@ -1,0 +1,1 @@
+start .\doc\SumatraPDF.exe .\doc\manual.pdf
